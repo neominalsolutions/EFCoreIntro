@@ -1,4 +1,5 @@
 using EFCoreIntro.Data.Contexts;
+using EFCoreIntro.NortwndSample;
 using Microsoft.EntityFrameworkCore;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -7,6 +8,7 @@ var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllersWithViews();
 
 
+builder.Services.AddDbContext<NORTHWNDContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("NortwndConn")));
 
 builder.Services.AddDbContext<AppDbContext>(opt => opt.UseSqlServer(builder.Configuration.GetConnectionString("SqlConn")));
 
